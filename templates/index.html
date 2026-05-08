@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote OSIS 2026</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/svg/space-invaders.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/kjua@0.9.0/dist/kjua.min.js"></script>
+</head>
+<body class="overflow-hidden w-[100vw] h-[100vh]">
+    <div class="w-full h-full fixed">   
+        <audio id="music"loop src="/static/audio/music-bg.mp3"></audio>
+        <video id="bg-video" src="/static/video/bg.mp4" class="absolute top-0 left-0 -z-1" autoplay muted loop playsinline></video>
+    </div>
+
+    <div id="rain_container" class="absolute w-[100vw] h-[100vh] overflow-hidden top-0 left-0">
+        <div id="vote_splash" class="absolute flex justify-center items-center vote-splash w-[5cqw] bottom-[110%] left-[50%] aspect-[1.6/1] bg-[--p] rounded-md">
+            <label class="basic-text vote-text-splash text-[1cqw]">Clement</label>
+        </div>
+    </div>
+
+    <div id="welcome" class="toppage w-full h-full fixed justify-center flex items-center flex-col">
+        <div class="mb-20 p-8 basic-element anim-loop1 ">
+            <label class="text-[4cqh] text-white font-[bold] enlarge-text-1">VOTE OSIS 2026</label>
+        </div>
+        <div class="basic-element enlarge-screen-1 p-2 pl-16 pr-16 hover-grew hover-btn">
+            <button data-to="show" data-fn="startFest" class="switch-page-btn text-[4cqw] text-white font-[bold] ">GOT TALENT</button>
+        </div>
+        <div class="basic-element enlarge-screen-1 p-2 pl-16 pr-16 hover-grew hover-btn mt-[2%]">
+            <button data-to="leaderboard" class="switch-page-btn text-[4cqw] text-white font-[bold]">CALON</button>
+        </div>
+
+        <!-- SVG -->
+
+        <div class="space-inv a1 absolute aspect-square h-[30%] top-[50%] left-[10%]">
+            <img src="/static/svg/space-invaders.svg" class="updown object-contain w-full h-full">
+        </div>
+        <div class="space-inv a2 absolute aspect-square h-[30%] top-[15%] left-[76%]">
+            <img src="/static/svg/space-invaders.svg" class="updown object-contain w-full h-full">
+        </div>
+
+        <div class="admin-tool w-[100%] absolute h-[15%] top-[85%] left-0 p-4 flex justify-end">
+            <div class="h-full aspect-square relative basic-element">
+                <img src="/static/svg/qrcode.svg">
+                <button id="qr-code-btn" class="absolute w-full h-full top-0 left-0"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="leaderboard" class="toppage hidden w-full h-full fixed flex justify-center items-center">
+    
+        <div class="w-full h-full relative flex flex-col justify-center items-center">
+    
+            <div class="mb-[10vh] pt-2 pb-2 p-8 basic-element enlarge-div-1">
+                <label class="text-[5cqw] text-white font-[bold]">PASLON</label>
+            </div>
+    
+            <div class="basic-element h-[60%] p-2 w-[80%]">
+                <div id="leaderboard-fn" class="p-1 h-full w-full flex flex-col gap-[2.8vh]">
+                    <div class="w-full leaderboard-col grid grid-cols-3 grid-row-1">
+                        <label class="basic-text text-[--p]">NAME</label>
+                        <label class="basic-text text-[--p]">VOTED</label>
+                        <label class="basic-text text-[--p]">CHOICE</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="absolute w-[100%] h-[100%] p-[5%] pointer-events-none">
+            <div
+                class="w-[10%] aspect-square basic-element hover-grew hover-btn relative flex justify-center items-center max-w-full max-h-full">
+                <img src="/static/svg/back.svg" class="w-[80%] aspect-square">
+                <button class="top-back-btn absolute w-[100%] h-[100%] top-0 left-0 pointer-events-auto"></button>
+            </div>
+        </div>
+    
+    </div>
+
+    <div id="fade" class="w-full h-full absolute bg-black opacity-[0] hidden">
+    
+    </div>
+    
+    <div id="show" class="toppage hidden w-full h-full fixed justify-center flex items-center flex-col">
+        <div id="show_numbervoted_displayer" class="withllts w-[100%] h-[100%] absolute top-0 left-0 flex justify-center items-center flex-col">
+            <label class="basic-text total text-[25cqw] h-auto withllts">1741</label>
+            <label class="basic-text absolute top-[70%] withllts">voted</label>
+        </div>
+        
+        <div id="media-player" class="withllts h-[70%] aspect-[3/4] fixed">
+            <video class="w-[100%] h-[100%] " autoplay muted loop src="/static/video/kicaumaniaa.webm">
+                Not supported.
+            </video>
+        </div>
+
+        <div id="media-img" class="withllts h-[70%] aspect-[3/4] fixed">
+            <img class="w-[100%] h-[100%] withllts" src="/static/img/Gabriel.jpeg">
+        </div>
+
+        <div id="show_name_displayer" class="withllts absolute relative w-[50%] top-[40%] left-0 basic-element p-8 flex justify-center items-center">
+            <label class="basic-text">Clement Basilea Tomatala</label>
+        </div>
+
+    </div>
+
+    <div id="void" class="hidden">
+        <div id="objNode_aspirasi" class="w-full h-auto flex justify-start items-center">
+            <label class="w-[100%] basic-text text-left">" haha "</label>
+        </div>
+
+        <div id="top_board" class="w-full h-auto leaderboard-col grid grid-cols-3 grid-row-1">
+            <label class="basic-text text-[--p]">NAME</label>
+            <label class="basic-text text-[--p]">VOTED</label>
+            <label class="basic-text text-[--p]">CHOICE</label>
+        </div>
+        <div id="side_board" class="w-full leaderboard-col grid grid-cols-3 grid-row-1 justify-center items-center gap-[5%]">
+            <label class="abc-1 basic-text-full-name !text-left">Clement</label>
+            <label class="abc-2 basic-text">1742</label>
+
+            <div class="abc-3 w-full h-full flex justify-center items-center gap-[10%]">
+                <div class="w-[40%] withts hover-grew hover-btn h-full bg-[--p] vote-btn-md rounded-3xl flex justify-center items-center">
+                    <button data-calon="" class="abcd-1 basic-text vote-btn-fn-open">VOTE</button>
+                </div>
+
+                <div class="w-[40%] withts hover-grew hover-btn h-full bg-[--p] vote-btn-md rounded-3xl flex justify-center items-center">
+                    <button data-calon="" class="abcd-2 small-text">LIAT<br>ASPIRASI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="voter" class="withts hidden absolute top-0 left-0 w-full h-full flex justify-center items-center">
+        <div class="a1 w-[40%] h-[40%] basic-element flex flex-col justify-start items-center">
+            <label id="to-name" class="basic-text mt-4">to Clement Basilea Tomatala</label>
+            <label class="basic-text">Aspirasi : </label>
+            <div class="w-full h-[50%] flex justify-center items-center pl-12 pr-12">
+                <textarea id="aspirasi-field" type="text" class="basic-text h-full w-full bg-transparent outline-none border-none text-center"></textarea>
+            </div>
+            <div class="w-[50%] h-[25%] flex justify-center items-center">
+                <button id="submit-vote" class="basic-btn vote-btn hover-grew hover-btn">VOTE</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-view w-[100%] bg-[rgba(50,0,50,0)] h-[100%] absolute flex pointer-events-none justify-center items-center">
+        <div id="table-aspirasi" class="relative withts w-[100%] hidden touch-bg-to-hide pointer-events-auto h-[100%] bg-[rgba(50,0,50,0.5)] flex justify-center items-center p-16">
+            <div id="list-aspirasi" class="basic-element !w-[100%] !max-w-[80%] !h-[80%] flex flex-col overflow-y-auto justify-start gap-y-8 items-center p-16 "></div>
+        </div>
+    </div>
+
+    <div class="admin-view w-[100%] bg-[rgba(50,0,50,0)] h-[100%] absolute flex pointer-events-none justify-center items-center">
+        <div id="admin-qr" class="qrcode hidden aspect-square relative withts h-[75%] basic-element bg-[rgba(50,0,50,0.5)] flex justify-center items-center">
+            <div id="web-qrcode" class="!w-[100%] !max-w-[100%] !h-[100%] flex justify-center items-center border-[16px]">
+
+            </div>
+            <div class="w-[100%] absolute h-[8%] top-[105%] flex justify-center items-center">
+                <div class="aspect-square h-[100%] flex justify-center items-center mr-4">
+                    <img src="/static/svg/wifi.svg" class="object-contain">
+                </div>
+                <label id="wlan-ssid" class="basic-text">Loading...</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

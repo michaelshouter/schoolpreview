@@ -1,0 +1,209 @@
+@font-face {
+    font-family: "bold";
+    src: url('/static/fonts/Minecraft.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "light";
+    src: url('/static/fonts/Ubuntu-Regular.woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+:root {
+    --p: #c600ff;
+}
+
+body {
+    overflow: hidden;
+}
+
+.withts {
+    transition: 0.125s ease;
+}
+
+.withlts {
+    transition: 0.5s ease;
+}
+
+#bg-video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.basic-element {
+    background-color: rgba(0,0,0,0.75);
+    border: 1cqw solid var(--p);
+    border-radius: 16px;
+    transition: 0.175s ease;
+}
+
+button {
+    touch-action: manipulation;
+}
+
+.hover-grew:hover {
+    transform: scale(1.1);
+}
+
+.hover-btn:active {
+    transform: scale(1);
+}
+
+.anim-loop1 {
+    animation: loop1 .55s linear infinite;
+}
+
+.toppage {
+    transition: 0.5s ease;
+}
+
+#welcome {
+    transition: 0.5s ease;
+}
+
+#fade {
+    transition: 0.125s ease;
+}
+
+.small-text {
+    color: white;
+    font-size: 1cqw;
+    font-family: 'bold';
+    text-align: center;
+}
+
+.basic-text {
+    color: white;
+    font-size: 2cqw;
+    font-family: 'bold';
+    text-align: center;
+}
+
+.basic-text-full-name {
+    color: white;
+    font-size: 1.25cqw;
+    font-family: 'bold';
+    text-align: center;
+}
+
+.basic-btn {
+    background-color: var(--p);
+    border-radius: 12px;
+    color: white;
+    font-size: 150%;
+    font-family: 'bold';
+    transition: 0.125s ease;
+}
+
+.vote-btn {
+    width: 50%;
+    height: 80%;
+    font-size: 200%;
+    text-align: center;
+}
+
+.leaderboard-col {
+    height: 10%;
+}
+
+.updown {
+    animation: arcade-float 0.4s steps(8) infinite alternate;
+}
+
+.withsts {
+    transition: 0.25s ease;
+}
+
+.withllts {
+    transition: 1s ease;
+}
+
+@keyframes loop1 {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes arcade-float {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(2vh);
+        /* Adjust distance as needed */
+    }
+}
+
+@media screen and (max-width: 1600px) {
+
+    .space-inv {
+        width: 30%;
+    }
+
+    .space-inv.a1 {
+        top: 60%;
+    }
+    
+    .space-inv.a2 {
+        top: 5%;
+        left: 55%;
+    }
+
+    .enlarge-screen-1 {
+        transform: scale(1.5);
+        margin-top: 4%;
+        margin-bottom: 8%;
+    }
+
+    .enlarge-text-1 {
+        font-size: 10cqh;
+    }
+
+    .enlarge-div-1 {
+        transform: scale(1.5);
+    }
+
+    .back-btn {
+        width: 40%;
+    }
+
+    .basic-text {
+        font-size: 4cqw;
+    }
+
+    .basic-text-full-name {
+        font-size: 3cqw;
+    }
+
+    .basic-btn {
+        font-size: 4cqw;
+    }
+
+    .vote-btn-md {
+        min-width: 100%;
+        max-height: 70%;
+    }
+
+    #voter .a1 {
+        width: 90%;
+    }
+    
+    .vote-splash {
+        min-width: 10cqw;
+    }
+
+    .vote-text-splash {
+        font-size: 2cqw;
+    }
+}
