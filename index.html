@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote OSIS 2026</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="icon" type="image/x-icon" href="/static/svg/space-invaders.svg">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="icon" type="image/x-icon" href="static/svg/space-invaders.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -13,8 +13,8 @@
 </head>
 <body class="overflow-hidden w-[100vw] h-[100vh]">
     <div class="w-full h-full fixed">   
-        <audio id="music"loop src="/static/audio/music-bg.mp3"></audio>
-        <video id="bg-video" src="/static/video/bg.mp4" class="absolute top-0 left-0 -z-1" autoplay muted loop playsinline></video>
+        <audio id="music"loop src="static/audio/music-bg.mp3"></audio>
+        <video id="bg-video" src="static/video/bg.mp4" class="absolute top-0 left-0 -z-1" autoplay muted loop playsinline></video>
     </div>
 
     <div id="rain_container" class="absolute w-[100vw] h-[100vh] overflow-hidden top-0 left-0">
@@ -37,15 +37,15 @@
         <!-- SVG -->
 
         <div class="space-inv a1 absolute aspect-square h-[30%] top-[50%] left-[10%]">
-            <img src="/static/svg/space-invaders.svg" class="updown object-contain w-full h-full">
+            <img src="static/svg/space-invaders.svg" class="updown object-contain w-full h-full">
         </div>
         <div class="space-inv a2 absolute aspect-square h-[30%] top-[15%] left-[76%]">
-            <img src="/static/svg/space-invaders.svg" class="updown object-contain w-full h-full">
+            <img src="static/svg/space-invaders.svg" class="updown object-contain w-full h-full">
         </div>
 
         <div class="admin-tool w-[100%] absolute h-[15%] top-[85%] left-0 p-4 flex justify-end">
             <div class="h-full aspect-square relative basic-element">
-                <img src="/static/svg/qrcode.svg">
+                <img src="static/svg/qrcode.svg">
                 <button id="qr-code-btn" class="absolute w-full h-full top-0 left-0"></button>
             </div>
         </div>
@@ -74,7 +74,7 @@
         <div class="absolute w-[100%] h-[100%] p-[5%] pointer-events-none">
             <div
                 class="w-[10%] aspect-square basic-element hover-grew hover-btn relative flex justify-center items-center max-w-full max-h-full">
-                <img src="/static/svg/back.svg" class="w-[80%] aspect-square">
+                <img src="static/svg/back.svg" class="w-[80%] aspect-square">
                 <button class="top-back-btn absolute w-[100%] h-[100%] top-0 left-0 pointer-events-auto"></button>
             </div>
         </div>
@@ -92,13 +92,13 @@
         </div>
         
         <div id="media-player" class="withllts h-[70%] aspect-[3/4] fixed">
-            <video class="w-[100%] h-[100%] " autoplay muted loop src="/static/video/kicaumaniaa.webm">
+            <video class="w-[100%] h-[100%] " autoplay muted loop src="static/video/kicaumaniaa.webm">
                 Not supported.
             </video>
         </div>
 
         <div id="media-img" class="withllts h-[70%] aspect-[3/4] fixed">
-            <img class="w-[100%] h-[100%] withllts" src="/static/img/Gabriel.jpeg">
+            <img class="w-[100%] h-[100%] withllts" src="static/img/Gabriel.jpeg">
         </div>
 
         <div id="show_name_displayer" class="withllts absolute relative w-[50%] top-[40%] left-0 basic-element p-8 flex justify-center items-center">
@@ -159,13 +159,13 @@
             </div>
             <div class="w-[100%] absolute h-[8%] top-[105%] flex justify-center items-center">
                 <div class="aspect-square h-[100%] flex justify-center items-center mr-4">
-                    <img src="/static/svg/wifi.svg" class="object-contain">
+                    <img src="static/svg/wifi.svg" class="object-contain">
                 </div>
                 <label id="wlan-ssid" class="basic-text">Loading...</label>
             </div>
         </div>
     </div>
 
-    <script src="/static/js/main.js"></script>
+    <script src="static/js/main.js"></script>
 </body>
 </html>

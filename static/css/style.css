@@ -1,13 +1,13 @@
 @font-face {
     font-family: "bold";
-    src: url('/static/fonts/Minecraft.ttf');
+    src: url('static/fonts/Minecraft.ttf');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: "light";
-    src: url('/static/fonts/Ubuntu-Regular.woff');
+    src: url('static/fonts/Ubuntu-Regular.woff');
     font-weight: 300;
     font-style: normal;
 }

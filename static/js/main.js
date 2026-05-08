@@ -13,7 +13,7 @@ const colAspirasi = document.querySelector('#objNode_aspirasi')
 const welcome = document.getElementById('welcome')
 const voter = document.getElementById('voter')
 const fade = document.getElementById('fade')
-const applause = new Audio("/static/audio/applause.mp3")
+const applause = new Audio("static/audio/applause.mp3")
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 let db = false;
 window.addEventListener('click', () => {
@@ -377,7 +377,7 @@ function showStatsImg(name, numberofvotes) {
     applause.currentTime = 0
 
     const callName = name.split(" ")[0];
-    show_media_img.querySelector('img').src = `/static/img/${callName}.jpeg`
+    show_media_img.querySelector('img').src = `static/img/${callName}.jpeg`
     show_media_img.style.display = 'flex'
 
     show_media.style.display = 'none'
