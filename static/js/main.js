@@ -176,6 +176,8 @@ async function showLeaderboard() {
         leaderboard.append(sampleside)
     }
 
+    const names = Object.keys(toFixedArray)
+    const values = Object.values(toFixedArray)
     new Chart(document.getElementById('myChart'), {
         type: 'pie',
         data: {
