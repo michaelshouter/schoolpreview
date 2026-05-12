@@ -20,6 +20,10 @@ body {
     overflow: hidden;
 }
 
+.overflow-y-auto {
+    scrollbar-width: none;
+}
+
 .withts {
     transition: 0.125s ease;
 }
@@ -205,5 +209,10 @@ button {
 
     .vote-text-splash {
         font-size: 2cqw;
+    }
+    
+    #myChart {
+        display: none;
+        opacity: 0;
     }
 }

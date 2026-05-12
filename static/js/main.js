@@ -18,7 +18,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 let db = false;
 window.addEventListener('click', () => {
     const music_bg = document.getElementById('music');
-    // music_bg.play();
+    music_bg.play();
 }, {once : true})
 
 // Mobile Error
@@ -151,6 +151,8 @@ async function showLeaderboard() {
     // console.log(calon)
     leaderboard.innerHTML = ''
 
+    let toFixedArray = {}
+
     let sampletop = topboard.cloneNode(true)
     leaderboard.appendChild(sampletop)
 
@@ -161,6 +163,7 @@ async function showLeaderboard() {
     for (let i = 0; i < table_calon.length ; i++) {
         const data = table_calon[i]
         let sampleside = sideboard.cloneNode(true)
+        toFixedArray[data.nama_siswa] = data.total_voted
         sampleside.querySelector('.abc-1').innerText = "=> " + data.nama_siswa
         sampleside.querySelector('.abc-2').innerText = data.total_voted
         sampleside.querySelector('.abc-3').querySelector('.abcd-1').addEventListener('click', () => {
@@ -173,13 +176,33 @@ async function showLeaderboard() {
         leaderboard.append(sampleside)
     }
 
-    // Object.entries(calon).forEach(([k, v]) => {
-    //     let sampleside = sideboard.cloneNode(true)
-    //     sampleside.querySelector('.abc-1').innerText = k
-    //     sampleside.querySelector('.abc-2').innerText = v
-
-    //     leaderboard.append(sampleside)
-    // })
+    new Chart(document.getElementById('myChart'), {
+        type: 'pie',
+        data: {
+            labels: names, // ['Marketing', 'Sales', 'R&D', 'Support']
+            datasets: [{
+                data: values, // [1200, 2500, 600, 300]
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#aa4b89', '##e5c7a3']
+            }],
+            borderWidth:0,
+            hoverOffset:0
+        },
+        options: {
+            plugins: {
+                tooltip: {
+                    // This ensures when you hover, you see "Name: Value"
+                    callbacks: {
+                        label: function (context) {
+                            let label = context.label || '';
+                            let value = context.parsed;
+                            return `${label}: ${value}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
 }
 
 async function showAspirasi(calon) {
@@ -266,6 +289,8 @@ function commitVote() {
         setTimeout(() => {
             lock = false
         }, 1000)
+
+        updateSqlData()
     }
 }
 
@@ -455,12 +480,14 @@ async function setQRCode() {
     if (settedQR) {return}
     settedQR = true
 
-    const data = await backend_get({ 'action': "wlan_ip" }, "/api/info")
-    document.getElementById('wlan-ssid').innerText = data.ssid
+    // const data = await backend_get({ 'action': "wlan_ip" }, "/api/info")
+    // document.getElementById('wlan-ssid').innerText = data.ssid
+    document.getElementById('wlan-ssid').innerText = "VOTE OSIS 2026"
 
     const el = kjua({
         render: 'svg', // Scalable
-        text: 'http://' + data.ip,
+        // text: 'http://' + data.ip,
+        text: 'https://michaelshouter.github.io/schoolpreview/',
         fill: '#000',
         size: 400,     // Base size
     });
