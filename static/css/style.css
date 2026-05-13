@@ -212,6 +212,7 @@ button {
     }
     
     #myChart {
+        pointer-events: none;
         display: none;
         opacity: 0;
     }

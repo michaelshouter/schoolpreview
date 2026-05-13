@@ -190,7 +190,7 @@ async function showLeaderboard() {
             hoverOffset:0
         },
         options: {
-            plugins: {
+}            plugins: {
                 tooltip: {
                     // This ensures when you hover, you see "Name: Value"
                     callbacks: {
